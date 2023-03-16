@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\InvoicesController;
+use App\Http\Controllers\InvoiceStatusesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,14 +29,9 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-
-    Route::group([
-        'as' => 'users.',
-        'prefix' => 'users'
-    ], function() {
+    Route::name('users.')->prefix('users')->group(function () {
         Route::get('', [UserController::class, 'index'])
             ->name('index')
             ->middleware(['permission:users.index']);
     });
-
 });
