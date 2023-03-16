@@ -3,8 +3,9 @@
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\InvoicesController;
-use App\Http\Controllers\InvoiceStatusesController;
+use App\Http\Controllers\TicketController;
+use App\Http\Controllers\HostingController;
+use App\Http\Controllers\HostingTypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +30,22 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::name('users.')->prefix('users')->group(function () {
+
+    Route::group([
+        'as' => 'users.',
+        'prefix' => 'users'
+    ], function() {
         Route::get('', [UserController::class, 'index'])
             ->name('index')
             ->middleware(['permission:users.index']);
     });
+
+    Route::get('async/users', [UserController::class, 'async'])
+        ->name('async.users');
+
+    Route::resource('hosting-types', HostingTypeController::class)->only([
+        'index', 'create', 'edit'
+    ]);
+    Route::resource('hosting', HostingController::class);
+    Route::resource('ticket', TicketController::class);
 });
