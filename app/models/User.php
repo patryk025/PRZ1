@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Invoices;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Jetstream\HasProfilePhoto;
 use Spatie\Permission\Traits\HasRoles;
@@ -13,13 +12,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements MustVerifyEmail
-{
+{   
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
     use HasRoles;
+    
 
     /**
      * The attributes that are mass assignable.
@@ -61,14 +61,4 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
     ];
-
-    // public function isAdmin(): bool
-    // {
-    //     return $this->hasRole(config('auth.roles.admin'));
-    // }
-
-    // public function invoices()
-    // {
-    //     return $this->hasMany(Invoices::class);
-    // }
 }
