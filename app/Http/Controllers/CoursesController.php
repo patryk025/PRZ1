@@ -28,9 +28,9 @@ class CoursesController extends Controller
     {
         return view(
             'courses.form',
-            "course" => {
-                
-            }
+            [
+                'course' => null
+            ]
         );
     }
 
