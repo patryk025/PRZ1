@@ -42,7 +42,6 @@ class UsersTableView extends TableView
         return [
             __('users.attributes.name'),
             __('users.attributes.email'),
-            __('users.attributes.roles'),
             __('users.attributes.created_at'),
             // Header::title(__('users.attributes.name'))->sortBy('name'),
             // Header::title(__('users.attributes.email'))->sortBy('email'),
@@ -62,7 +61,6 @@ class UsersTableView extends TableView
         return [
             $model->name,
             $model->email,
-            $model->roles->implode('name', ', '),
             $model->created_at,
 
         ];
