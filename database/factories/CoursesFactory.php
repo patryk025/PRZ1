@@ -5,10 +5,12 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\TicketStatus>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class TicketStatusFactory extends Factory
+class CoursesFactory extends Factory
 {
+    protected $model = Course::class;
+
     /**
      * Define the model's default state.
      *
@@ -17,7 +19,7 @@ class TicketStatusFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->unique()->word(100),
+            'name' => $this->faker->name()
         ];
     }
 }
