@@ -46,7 +46,7 @@ class CoursesForm extends Component
 
     public function updated($propetyName)
     {
-        $this->ValidateOnly($propetyName)
+        $this->ValidateOnly($propetyName);
     }
 
     public function save()
@@ -57,7 +57,7 @@ class CoursesForm extends Component
         $this->notification()->success(
             $title = $this->editMode
                 ? __('translation.messages.successes.updated_title')
-                : __('translation.messages.successes.stored_title')
+                : __('translation.messages.successes.stored_title'),
             $description = $this->editMode
                 ? __('courses.messages.successes.updated', ['name' => $this->course->name])
                 : __('courses.messages.successes.stored', ['name' => $this->course->name])
