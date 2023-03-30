@@ -24,8 +24,16 @@ class CoursesTableView extends TableView
     protected $model = Course::class;
 
     public $searchBy = [
-        'name'
+        'name',
+        'created_at',
+        'updated_at',
+        'deleted_at',
     ];
+
+    public function repository(): Builder
+    {
+        return Kurs::query()->withTrashed();
+    }
 
     protected $paginate = 7;
 
@@ -37,8 +45,10 @@ class CoursesTableView extends TableView
     public function headers(): array
     {
         return [
-            __('Nazwa'),
-
+            Header::title(__('kursy.attributes.name'))->sortBy('name'),
+            Header::title(__('translation.attributes.created_at'))->sortBy('created_at'),
+            Header::title(__('translation.attributes.updated_at'))->sortBy('updated_at'),
+            Header::title(__('translation.attributes.deleted_at'))->sortBy('deleted_at'),
         ];
     }
 
@@ -51,7 +61,9 @@ class CoursesTableView extends TableView
     {
         return [
             $model->name,
-
+            $model->created_at,
+            $model->updated_at,
+            $model->deleted_at,
         ];
     }
 }

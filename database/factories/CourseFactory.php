@@ -20,7 +20,21 @@ class CourseFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name()
+            'name' => $this->faker->unique()->word(100),
+            'created_at' => $this->faker->dateTimeBetween(
+                '- 8 weeks',
+                '- 4 weeks',
+            ),
+            'updated_at' => $this->faker->dateTimeBetween(
+                '- 4 weeks',
+                '- 1 weeks',
+            ),
+            'deleted_at' => rand(0, 10) === 0
+                ? $this->faker->dateTimeBetween(
+                    '- 1 weeks',
+                    '+ 2 weeks',
+                )
+                : null
         ];
     }
 }

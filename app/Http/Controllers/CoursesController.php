@@ -29,7 +29,7 @@ class CoursesController extends Controller
         return view(
             'courses.form',
             [
-                'course' => null
+                'course' => $course
             ]
         );
     }
