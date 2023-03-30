@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Course;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class CoursesSeeder extends Seeder
 {

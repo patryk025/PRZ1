@@ -2,12 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\Course;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class CoursesFactory extends Factory
+class CourseFactory extends Factory
 {
     protected $model = Course::class;
 

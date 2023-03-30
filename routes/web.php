@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\HostingController;
 use App\Http\Controllers\HostingTypeController;
 
