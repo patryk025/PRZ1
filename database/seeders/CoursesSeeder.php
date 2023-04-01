@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\TicketMessage;
+use App\Models\Course;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class TicketMessageSeeder extends Seeder
+class CoursesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class TicketMessageSeeder extends Seeder
      */
     public function run()
     {
-        TicketMessage::factory()->count(50)->create();
+        Course::factory()->count(50)->create();
     }
 }
