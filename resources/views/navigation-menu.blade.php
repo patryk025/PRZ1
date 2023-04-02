@@ -18,15 +18,18 @@
 
                     @can('log-viewer')
                     <x-jet-nav-link href="{{ route('log-viewer::dashboard') }}" :active="request()->routeIs('log-viewer::dashboard')">
-                        {{ __('translation.navigation.log-viewer') }}
+                        {{ __('Logi i błędy') }}
                     </x-jet-nav-link>
                     @endcan
                     
                     @can('users.index')
                     <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
-                        {{ __('translation.navigation.users') }}
+                        {{ __('Uczestnicy') }}
                     </x-jet-nav-link>
                     @endcan
+                    <x-jet-nav-link href="{{ route('courses.index') }}" :active="request()->routeIs('courses.index')">
+                        {{ __('Kursy') }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 
@@ -162,6 +165,9 @@
                 {{ __('translation.navigation.users') }}
             </x-jet-nav-link>
             @endcan
+            <x-jet-nav-link href="{{ route('courses.index') }}" :active="request()->routeIs('courses.index')">
+                {{ __('Kursy') }}
+            </x-jet-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->

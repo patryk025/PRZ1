@@ -3,65 +3,57 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 // use Illuminate\Database\Eloquent\Builder;
 
-class UserController extends Controller
+class CoursesController extends Controller
 {
     public function index()
     {
         return view(
-            'users.index',
-            [
-                'users' => User::with('roles')->get()
-            ]
+            'courses.index'
         );
     }
 
     public function create()
     {
         return view(
-            'users.form'
+            'courses.form'
         );
     }
 
-    public function edit(User $user)
+    public function edit(Course $course)
     {
         return view(
-            'users.form'
+            'courses.form',
+            [
+                'course' => $course
+            ]
         );
     }
 
-    public function update(Request $request, User $user)
+    public function update(Request $request, Course $course)
 {
-    $user->name = $request->input('name');
-    $user->email = $request->input('email');
-    $user->save();
-    return redirect()->route('users.index')->with('success', 'Użytkownik został zaktualizowany.');
+
 }
 
     public function delete()
     {
         return view(
-            'users.form'
+            'courses.form'
         );
     }
 
     public function store(Request $request)
-{
-    $user = new User();
-    $user->name = $request->input('name');
-    $user->email = $request->input('email');
-    $user->password = Hash::make($request->input('password'));
-    $user->save();
+    {
+        $course = new Course();
+        $course->name = $request->input('name');
+        $course->save();
 
-    return redirect()->route('users.index');
-    /*return redirect()->route('users.create');
-    return redirect()->route('users.edit');
-    return redirect()->route('users.destroy');*/
-    return redirect()->route('users.create')->with('success', 'Użytkownik został dodany.');
-}
+        return redirect()->route('courses.index');
+    }
 
     // public function async(Request $request) {
     //     return User::query()

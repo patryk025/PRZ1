@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\HostingController;
 use App\Http\Controllers\HostingTypeController;
 
@@ -48,4 +49,18 @@ Route::middleware([
     ]);
     Route::resource('hosting', HostingController::class);
     Route::resource('ticket', TicketController::class);
+
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+    Route::post('/users', [UserController::class, 'store'])->name('users.store');
+    Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+    Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+
+    Route::get('/courses', [CoursesController::class, 'index'])->name('courses.index');
+    Route::get('/courses/create', [CoursesController::class, 'create'])->name('courses.create');
+    Route::post('/courses', [CoursesController::class, 'store'])->name('courses.store');
+    Route::get('/courses/{id}/edit', [CoursesController::class, 'edit'])->name('courses.edit');
+    Route::put('/courses/{id}', [CoursesController::class, 'update'])->name('courses.update');
+    Route::delete('/courses/{id}', [CoursesController::class, 'destroy'])->name('courses.destroy');
 });

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Livewire\Users;
+namespace App\Http\Livewire\Courses;
 
-use App\Models\User;
+use App\Models\Course;
 use WireUi\Traits\Actions;
 use LaravelViews\Facades\Header;
 use LaravelViews\Views\TableView;
@@ -14,20 +14,20 @@ use App\Http\Livewire\Users\Actions\AssignWorkerRoleAction;
 use App\Http\Livewire\Users\Actions\RemoveWorkerRoleAction;
 
 
-class UsersTableView extends TableView
+class CoursesTableView extends TableView
 {
     use Actions;
 
     /**
      * Sets a model class to get the initial data
      */
-    protected $model = User::class;
+    protected $model = Course::class;
 
     public $searchBy = [
         'name',
-        'email',
-        'roles.name',
         'created_at',
+        'updated_at',
+        'deleted_at',
     ];
 
     protected $paginate = 7;
@@ -40,14 +40,10 @@ class UsersTableView extends TableView
     public function headers(): array
     {
         return [
-            __('users.attributes.name'),
-            __('users.attributes.email'),
-            __('users.attributes.created_at'),
-            // Header::title(__('users.attributes.name'))->sortBy('name'),
-            // Header::title(__('users.attributes.email'))->sortBy('email'),
-            // __('users.attributes.roles'),
-            // Header::title(__('users.attributes.created_at'))->sortBy('created_at'),
-
+            Header::title(__('kursy.attributes.name'))->sortBy('name'),
+            Header::title(__('translation.attributes.created_at'))->sortBy('created_at'),
+            Header::title(__('translation.attributes.updated_at'))->sortBy('updated_at'),
+            Header::title(__('translation.attributes.deleted_at'))->sortBy('deleted_at'),
         ];
     }
 
@@ -60,25 +56,9 @@ class UsersTableView extends TableView
     {
         return [
             $model->name,
-            $model->email,
             $model->created_at,
-
+            $model->updated_at,
+            $model->deleted_at,
         ];
     }
-    // protected function filters()
-    // {
-    //     return[
-    //         new UsersRoleFilter,
-    //         new EmailVerifiedFilter,
-    //     ];
-    // }
-    // protected function actionsByRow()
-    // {
-    //     return[
-    //         new AssignAdminRoleAction,
-    //         new AssignWorkerRoleAction,
-    //         new RemoveAdminRoleAction,
-    //         new RemoveWorkerRoleAction,
-    //     ];
-    // }
 }
