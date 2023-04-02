@@ -17,7 +17,13 @@ class CoursesForm extends Component
     public function rules()
     {
         return [
-            
+            'course.name'  => [
+                'required',
+                'string',
+                'min:2',
+                'unique:courses,name' .
+                    ($this->editMode ? (',' . $this->course->id) : ''),
+            ],
         ];
     }
 
@@ -41,7 +47,7 @@ class CoursesForm extends Component
 
     public function updated($propertyName)
     {
-        //$this->ValidateOnly($propertyName);
+        $this->ValidateOnly($propertyName);
     }
 
     public function save()
