@@ -1,7 +1,8 @@
 <?php
 
-namespace App\ttp\Livewire\Courses;
+namespace App\Http\Livewire\Courses;
 
+use App\Models\Course;
 use Livewire\Component;
 use WireUi\Traits\Actions;
 use Illuminate\Support\Str;
@@ -16,13 +17,7 @@ class CoursesForm extends Component
     public function rules()
     {
         return [
-            'course.name'  => [
-                'required',
-                'string',
-                'min:2',
-                'unique:course,name' .
-                    ($this->editMode ? (',' . $this->course->id) : ''),
-            ],
+            
         ];
     }
 
@@ -33,7 +28,7 @@ class CoursesForm extends Component
         ];
     }
 
-    public function mount(course $course, Bool $editMode)
+    public function mount(Course $course, Bool $editMode)
     {
         $this->course = $course;
         $this->editMode = $editMode;
@@ -44,9 +39,9 @@ class CoursesForm extends Component
         return view('livewire.courses.course-form');
     }
 
-    public function updated($propetyName)
+    public function updated($propertyName)
     {
-        $this->ValidateOnly($propetyName);
+        //$this->ValidateOnly($propertyName);
     }
 
     public function save()

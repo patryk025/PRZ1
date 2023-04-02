@@ -30,11 +30,6 @@ class CoursesTableView extends TableView
         'deleted_at',
     ];
 
-    public function repository(): Builder
-    {
-        return Kurs::query()->withTrashed();
-    }
-
     protected $paginate = 7;
 
     /**
