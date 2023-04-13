@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2b2695dd1a91f7ebecaa777267b4fad8",
+    "content-hash": "42113604a14c06d3405b0bd66c6c6921",
     "packages": [
         {
             "name": "arcanedev/log-viewer",
@@ -143,6 +143,16 @@
                 "source": "https://github.com/ARCANEDEV/Support/tree/9.0.0"
             },
             "time": "2022-02-10T19:52:50+00:00"
+        },
+        {
+            "name": "asantibanez/livewire-calendar",
+            "version": "master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Butochnikov/livewire-calendar.git",
+                "reference": "master"
+            },
+            "type": "library"
         },
         {
             "name": "bacon/bacon-qr-code",

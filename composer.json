@@ -7,6 +7,7 @@
     "require": {
         "php": "^8.0.2",
         "arcanedev/log-viewer": "^9.0",
+        "asantibanez/livewire-calendar": "*",
         "guzzlehttp/guzzle": "^7.2",
         "laravel-views/laravel-views": "^2.4",
         "laravel/framework": "^9.19",
@@ -66,6 +67,21 @@
             "pestphp/pest-plugin": true
         }
     },
+    "repositories": [
+        { 
+            "type": "package", 
+            "canonical": false, 
+            "package": { 
+                "version": "master", 
+                "name": "asantibanez/livewire-calendar", 
+                "source": { 
+                    "url": "https://github.com/Butochnikov/livewire-calendar.git", 
+                    "type": "git", 
+                    "reference": "master" 
+                } 
+            } 
+        }
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true
 }
