@@ -15,6 +15,7 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.5",
+        "omnia-digital/livewire-calendar": "^2.2",
         "spatie/laravel-permission": "^5.5",
         "wireui/wireui": "^1.17"
     },
@@ -67,21 +68,6 @@
             "pestphp/pest-plugin": true
         }
     },
-    "repositories": [
-        { 
-            "type": "package", 
-            "canonical": false, 
-            "package": { 
-                "version": "master", 
-                "name": "asantibanez/livewire-calendar", 
-                "source": { 
-                    "url": "https://github.com/Butochnikov/livewire-calendar.git", 
-                    "type": "git", 
-                    "reference": "master" 
-                } 
-            } 
-        }
-    ],
     "minimum-stability": "dev",
     "prefer-stable": true
 }

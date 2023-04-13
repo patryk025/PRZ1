@@ -63,4 +63,8 @@ Route::middleware([
     Route::get('/courses/{id}/edit', [CoursesController::class, 'edit'])->name('courses.edit');
     Route::put('/courses/{id}', [CoursesController::class, 'update'])->name('courses.update');
     Route::delete('/courses/{id}', [CoursesController::class, 'destroy'])->name('courses.destroy');
+
+    Route::get('/timetable', function() {
+        return view('timetables.index');
+    })->name("timetable.index");
 });
