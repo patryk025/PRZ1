@@ -29,21 +29,17 @@ class PermissionSeeder extends Seeder
 
         Permission::create(['name' => 'log-viewer']);
 
-        Permission::create(['name' => 'hosting-types.index']);
-        Permission::create(['name' => 'hosting-types.manage']);
+        Permission::create(['name' => 'courses.index']);
+        Permission::create(['name' => 'courses.create']);
+        Permission::create(['name' => 'courses.update']);
+        Permission::create(['name' => 'courses.restore']);
+        Permission::create(['name' => 'courses.delete']);
 
-        Permission::create(['name' => 'hosting.index']);
-        Permission::create(['name' => 'hosting.manage']);
-        Permission::create(['name' => 'hosting.create']);
-        Permission::create(['name' => 'hosting.update']);
-        Permission::create(['name' => 'hosting.restore']);
-        Permission::create(['name' => 'hosting.delete']);
-
-        Permission::create(['name' => 'ticket-status.index']);
-        Permission::create(['name' => 'ticket-status.manage']);
-
-        Permission::create(['name' => 'ticket.index']);
-        Permission::create(['name' => 'ticket.manage']);
+        Permission::create(['name' => 'timetable.index']);
+        Permission::create(['name' => 'timetable.create']);
+        Permission::create(['name' => 'timetable.update']);
+        Permission::create(['name' => 'timetable.restore']);
+        Permission::create(['name' => 'timetable.delete']);
 
         $adminRole = Role::findByName(config('auth.roles.admin'));
         $adminRole->givePermissionTo('users.index');
@@ -53,32 +49,34 @@ class PermissionSeeder extends Seeder
 
         $adminRole->givePermissionTo('log-viewer');
 
-        $adminRole->givePermissionTo('hosting-types.index');
-        $adminRole->givePermissionTo('hosting-types.manage');
+        $adminRole->givePermissionTo('courses.index');
+        $adminRole->givePermissionTo('courses.create');
+        $adminRole->givePermissionTo('courses.update');
+        $adminRole->givePermissionTo('courses.restore');
+        $adminRole->givePermissionTo('courses.delete');
 
-        $adminRole->givePermissionTo('hosting.index');
-        $adminRole->givePermissionTo('hosting.manage');
-        $adminRole->givePermissionTo('hosting.create');
-        $adminRole->givePermissionTo('hosting.update');
-        $adminRole->givePermissionTo('hosting.restore');
-        $adminRole->givePermissionTo('hosting.delete');
+        $adminRole->givePermissionTo('timetable.index');
+        $adminRole->givePermissionTo('timetable.create');
+        $adminRole->givePermissionTo('timetable.update');
+        $adminRole->givePermissionTo('timetable.restore');
+        $adminRole->givePermissionTo('timetable.delete');
 
-        $adminRole->givePermissionTo('ticket-status.index');
-        $adminRole->givePermissionTo('ticket-status.manage');
+        $teacherRole = Role::findByName(config('auth.roles.teacher'));
+        $teacherRole->givePermissionTo('courses.index');
+        $teacherRole->givePermissionTo('courses.create');
+        $teacherRole->givePermissionTo('courses.update');
+        $teacherRole->givePermissionTo('courses.restore');
+        $teacherRole->givePermissionTo('courses.delete');
 
-        $adminRole->givePermissionTo('ticket.index');
-        $adminRole->givePermissionTo('ticket.manage');
+        $teacherRole->givePermissionTo('timetable.index');
+        $teacherRole->givePermissionTo('timetable.create');
+        $teacherRole->givePermissionTo('timetable.update');
+        $teacherRole->givePermissionTo('timetable.restore');
+        $teacherRole->givePermissionTo('timetable.delete');
 
-        $serviceRole = Role::findByName(config('auth.roles.service'));
-        $serviceRole->givePermissionTo('hosting-types.index');
-        $serviceRole->givePermissionTo('hosting.index');
-        $serviceRole->givePermissionTo('ticket-status.index');
-        $serviceRole->givePermissionTo('ticket.index');
+        $studentRole = Role::findByName(config('auth.roles.student'));
+        $studentRole->givePermissionTo('courses.index');
 
-        $userRole = Role::findByName(config('auth.roles.user'));
-        $userRole->givePermissionTo('hosting-types.index');
-        $userRole->givePermissionTo('hosting.index');
-        $userRole->givePermissionTo('ticket-status.index');
-        $userRole->givePermissionTo('ticket.index');
+        $studentRole->givePermissionTo('timetable.index');
     }
 }
