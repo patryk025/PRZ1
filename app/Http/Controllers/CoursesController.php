@@ -55,6 +55,10 @@ class CoursesController extends Controller
         return redirect()->route('courses.index');
     }
 
+    public function Lessons(Course $course){
+        
+    }
+
     // public function async(Request $request) {
     //     return User::query()
     //         ->select('id', 'name')

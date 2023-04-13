@@ -7,6 +7,7 @@ use App\Http\Controllers\TicketController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\HostingController;
 use App\Http\Controllers\HostingTypeController;
+use App\Http\Controllers\LessonsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,4 +64,11 @@ Route::middleware([
     Route::get('/courses/{id}/edit', [CoursesController::class, 'edit'])->name('courses.edit');
     Route::put('/courses/{id}', [CoursesController::class, 'update'])->name('courses.update');
     Route::delete('/courses/{id}', [CoursesController::class, 'destroy'])->name('courses.destroy');
+
+    Route::get('/lessons', [LessonsController::class, 'index'])->name('lessons.index');
+    Route::get('/lessons/create', [LessonsController::class, 'create'])->name('lessons.create');
+    Route::post('/lessons', [LessonsController::class, 'store'])->name('lessons.store');
+    Route::get('/lessons/{id}/edit', [LessonsController::class, 'edit'])->name('lessons.edit');
+    Route::put('/lessons/{id}', [LessonsController::class, 'update'])->name('lessons.update');
+    Route::delete('/lessons/{id}', [LessonsController::class, 'destroy'])->name('lessons.destroy');
 });

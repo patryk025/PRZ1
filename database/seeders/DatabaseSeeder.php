@@ -9,6 +9,7 @@ use Illuminate\Database\Seeder;
 use Database\Seeders\RoleSeeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\CoursesSeeder;
+use Database\Seeders\InvoiceSeeder;
 use Illuminate\Support\Facades\Hash;
 use Database\Seeders\TimetableSeeder;
 use Database\Seeders\HostingTypeSeeder;
@@ -28,6 +29,8 @@ class DatabaseSeeder extends Seeder
          \App\Models\User::factory(10)->create();
         $this->call(CoursesSeeder::class);
         $this->call(TimetableSeeder::class);
+        $this->call(InvoiceSeeder::class);
+
 
         //  \App\Models\User::factory()->create([
         //      'name' => 'Test User',
