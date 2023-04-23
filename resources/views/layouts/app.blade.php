@@ -16,7 +16,9 @@
 
         <!-- Styles -->
         @livewireStyles
-        @laravelViewsStyles('laravel-views')
+        <!--@laravelViewsStyles('laravel-views')-->
+        <style href="{{ asset('laravel-views/laravel-views.css') }}"></style>
+        <style href="{{ asset('laravel-views/tailwind.css') }}"></style>
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
@@ -44,6 +46,7 @@
         @stack('modals')
 
         @livewireScripts
-        @laravelViewsScripts('laravel-views');
+        <!--@laravelViewsScripts('laravel-views');-->
+        <script src="{{ asset('laravel-views/laravel-views.js') }}"></script>
     </body>
 </html>
