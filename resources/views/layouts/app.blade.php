@@ -46,6 +46,7 @@
         @stack('modals')
 
         @livewireScripts
+        @livewireCalendarScripts
         <!--@laravelViewsScripts('laravel-views');-->
         <script src="{{ asset('laravel-views/laravel-views.js') }}"></script>
     </body>

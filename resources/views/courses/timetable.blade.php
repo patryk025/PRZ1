@@ -7,7 +7,12 @@
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-auto bg-white shadow-x1 sm:rounded-lg" id="table-view-wrapper">  
-                <livewire:courses.course-timetable />
+                <!--livewire:courses.course-timetable /-->
+                @php
+                    $extras = ['course' => $course];
+                @endphp
+
+                @livewire('courses.course-timetable', ['extras' => $extras])
             </div>
         </div>
     </div>
