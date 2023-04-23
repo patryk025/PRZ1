@@ -7,6 +7,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Database\Seeders\RoleSeeder;
+use Database\Seeders\TestSeeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\CoursesSeeder;
 use Database\Seeders\InvoiceSeeder;
@@ -30,6 +31,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CoursesSeeder::class);
         $this->call(TimetableSeeder::class);
         $this->call(InvoiceSeeder::class);
+        $this->call(TestSeeder::class);
 
 
         //  \App\Models\User::factory()->create([
