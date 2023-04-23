@@ -67,4 +67,6 @@ Route::middleware([
     Route::get('/timetable', function() {
         return view('timetables.index');
     })->name("timetable.index");
+
+    Route::get('/courses/{id}/timetable', [CoursesController::class, 'show'])->name('courses.timetable');
 });

@@ -35,9 +35,18 @@ class CoursesController extends Controller
     }
 
     public function update(Request $request, Course $course)
-{
+    {
 
-}
+    }
+
+    public function show($id)
+    {
+        return view(
+            'courses.timetable', [
+                'course' => Course::find($id)
+            ]
+        );
+    }
 
     public function delete()
     {
