@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('timetables', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_kursu');
             $table->string('nazwa_zajec');
             $table->text('opis_zajec');
             $table->dateTime('data_rozpoczecia');
