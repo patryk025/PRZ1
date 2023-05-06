@@ -28,6 +28,8 @@ class DatabaseSeeder extends Seeder
          \App\Models\User::factory(10)->create();
         $this->call(CoursesSeeder::class);
         $this->call(TimetableSeeder::class);
+        $this->call(FormRegistrationSeeder::class);
+
 
         //  \App\Models\User::factory()->create([
         //      'name' => 'Test User',
