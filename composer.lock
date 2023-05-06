@@ -145,16 +145,6 @@
             "time": "2022-02-10T19:52:50+00:00"
         },
         {
-            "name": "asantibanez/livewire-calendar",
-            "version": "master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Butochnikov/livewire-calendar.git",
-                "reference": "master"
-            },
-            "type": "library"
-        },
-        {
             "name": "bacon/bacon-qr-code",
             "version": "2.0.7",
             "source": {
