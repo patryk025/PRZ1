@@ -4,13 +4,14 @@ namespace App\Http\Livewire\Courses;
 
 use Carbon\Carbon;
 use App\Models\Course;
+use App\Models\Timetable;
 use Illuminate\Support\Collection;
 use App\Http\Livewire\CoursesTimetable;
 use Omnia\LivewireCalendar\LivewireCalendar;
 
 class CourseTimetable extends LivewireCalendar
 {
-    public Course $hostingType;
+    public Course $course;
 
     /*public function mount(Course $course, $initialYear = null, $initialMonth = null, $weekStartsAt = null, $calendarView = null, $dayView = null, $eventView = null, $dayOfWeekView = null, $dragAndDropClasses = null, $beforeCalendarView = null, $afterCalendarView = null, $pollMillis = null, $pollAction = null, $dragAndDropEnabled = true, $dayClickEnabled = true, $eventClickEnabled = true, $extras = []) {
         $this->course = $course;
@@ -46,7 +47,21 @@ class CourseTimetable extends LivewireCalendar
 
     public function events() : Collection
     {
-        return collect([
+        return Timetable::query()
+            ->whereDate('data_rozpoczecia', '>=', $this->gridStartsAt)
+            ->whereDate('data_rozpoczecia', '<=', $this->gridEndsAt)
+            ->where('id_kursu', '=', $this->course->id)
+            ->get()
+            ->map(function (Timetable $model) {
+                return [
+                    'id' => $model->id,
+                    'title' => $model->nazwa_zajec,
+                    'description' => $model->opis_zajec,
+                    'date' => $model->data_rozpoczecia,
+                ];
+            });
+            
+        /*return collect([
             [
                 'id' => 1,
                 'title' => 'test1',
@@ -59,6 +74,6 @@ class CourseTimetable extends LivewireCalendar
                 'description' => 'MAME JESTEM W KOMPUTRZE!!!',
                 'date' => Carbon::tomorrow(),
             ],
-        ]);
+        ]);*/
     }
 }
