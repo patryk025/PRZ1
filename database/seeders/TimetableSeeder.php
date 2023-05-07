@@ -9,6 +9,6 @@ class TimetableSeeder extends Seeder
 {
     public function run()
     {
-        Timetable::factory()->count(10)->create();
+        Timetable::factory()->count(300)->create();
     }
 }
