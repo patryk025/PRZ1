@@ -11,7 +11,12 @@
                 @php
                     $extras = ['course' => $course];
                 @endphp
-
+                <div>
+                    <button wire:click="prevMonth">Previous month</button>
+                </div>
+                <div>
+                    <button wire:click="nextMonth">Next month</button>
+                </div>
                 @livewire('courses.course-timetable', ['extras' => $extras])
             </div>
         </div>
