@@ -13,6 +13,12 @@ class CourseTimetable extends LivewireCalendar
 {
     public Course $course;
 
+    protected $listeners = [
+        'render' => 'updateCurrentMonthAndYear',
+        'prevMonth' => 'prevMonth', 
+        'nextMonth' => 'nextMonth'
+    ];
+
     /*public function mount(Course $course, $initialYear = null, $initialMonth = null, $weekStartsAt = null, $calendarView = null, $dayView = null, $eventView = null, $dayOfWeekView = null, $dragAndDropClasses = null, $beforeCalendarView = null, $afterCalendarView = null, $pollMillis = null, $pollAction = null, $dragAndDropEnabled = true, $dayClickEnabled = true, $eventClickEnabled = true, $extras = []) {
         $this->course = $course;
     }*/
@@ -25,6 +31,7 @@ class CourseTimetable extends LivewireCalendar
         );
         //$this->course = $course;
         $this->course = $extras['course'];
+        $this->updateCurrentMonthAndYear();
     }
 
     public function onDayClick($year, $month, $day)
@@ -43,6 +50,27 @@ class CourseTimetable extends LivewireCalendar
     {
         // This event will fire when an event is dragged and dropped into another calendar day
         // You will get the event id, year, month and day where it was dragged to
+    }
+
+    public function prevMonth()
+    {
+        parent::goToPreviousMonth();
+        $this->updateCurrentMonthAndYear();
+    }
+
+    public function nextMonth()
+    {
+        parent::goToNextMonth();
+        $this->updateCurrentMonthAndYear();
+    }
+
+    public function updateCurrentMonthAndYear()
+    {
+        /*dd(parent::subMonthNoOverflow());
+        $this->dispatchBrowserEvent('updateCurrentMonthAndYear', [
+            'month' => parent::$currentMonth,
+            'year' => parent::$currentYear,
+        ]);*/
     }
 
     public function events() : Collection
