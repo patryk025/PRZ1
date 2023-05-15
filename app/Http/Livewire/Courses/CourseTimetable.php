@@ -31,7 +31,7 @@ class CourseTimetable extends LivewireCalendar
         );
         //$this->course = $course;
         $this->course = $extras['course'];
-        $this->updateCurrentMonthAndYear();
+        //$this->updateCurrentMonthAndYear();
     }
 
     public function onDayClick($year, $month, $day)
@@ -55,23 +55,23 @@ class CourseTimetable extends LivewireCalendar
     public function prevMonth()
     {
         parent::goToPreviousMonth();
-        $this->updateCurrentMonthAndYear();
+        //$this->updateCurrentMonthAndYear();
     }
 
     public function nextMonth()
     {
         parent::goToNextMonth();
-        $this->updateCurrentMonthAndYear();
+        //$this->updateCurrentMonthAndYear();
     }
 
-    public function updateCurrentMonthAndYear()
+    /*public function updateCurrentMonthAndYear()
     {
-        /*dd(parent::subMonthNoOverflow());
-        $this->dispatchBrowserEvent('updateCurrentMonthAndYear', [
+        dd(parent::subMonthNoOverflow());
+        $this->dispatchBrowserEvent('updateCurrentMonthAndYear'/*, [
             'month' => parent::$currentMonth,
             'year' => parent::$currentYear,
-        ]);*/
-    }
+        ]);
+    }*/
 
     public function events() : Collection
     {

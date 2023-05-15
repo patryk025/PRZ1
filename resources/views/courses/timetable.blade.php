@@ -1,23 +1,38 @@
 <x-app-layout>
     <script>
+        var data = new Date();
+        var month = data.getMonth() + 1;
+        var year = data.getYear() + 1900;
+
+        const monthNames = [
+            'styczeń', 'luty', 'marzec', 'kwiecień', 'maj', 'czerwiec',
+            'lipiec', 'sierpień', 'wrzesień', 'październik', 'listopad', 'grudzień',
+        ];
+
         document.addEventListener('DOMContentLoaded', () => {
+            updateDate(0);
             document.getElementById('prevMonthButton').addEventListener('click', () => {
                 window.livewire.emit('prevMonth');
+                updateDate(-1);
             });
             document.getElementById('nextMonthButton').addEventListener('click', () => {
                 window.livewire.emit('nextMonth');
-            });
-            window.livewire.on('updateCurrentMonthAndYear', ({ month, year }) => {
-                const monthNames = [
-                    'styczeń', 'luty', 'marzec', 'kwiecień', 'maj', 'czerwiec',
-                    'lipiec', 'sierpień', 'wrzesień', 'październik', 'listopad', 'grudzień',
-                ];
-
-                const currentMonthAndYear = `${monthNames[month - 1]} ${year}`;
-                console.log(currentMonthAndYear);
-                document.getElementById('currentMonthAndYear').textContent = currentMonthAndYear;
+                updateDate(1);
             });
         });
+
+        function updateDate(offset) {
+            month += offset;
+            if(month == 0) {
+                month = 12;
+                year--;
+            }
+            else if(month == 13) {
+                month = 1;
+                year++;
+            }
+            document.getElementById("currentMonthAndYear").innerText = monthNames[month-1] + " " + year;
+        }
     </script>
     <x-slot name="header">
          <h2 class="text-xl font-semibold leading-tight text-gray-800">
