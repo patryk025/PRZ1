@@ -74,4 +74,6 @@ Route::middleware([
     Route::get('/register', [FormRegistrationController::class, 'index'])->name('register.index');
     Route::get('/register', [FormRegistrationController::class, 'create'])->name('register.create');
     Route::post('/register', [FormRegistrationController::class, 'store'])->name('register.store');
+
+    Route::get('/debug_mail/{id}', [CoursesController::class, 'register'])->name('register.register');
 });

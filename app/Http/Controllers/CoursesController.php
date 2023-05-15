@@ -5,8 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Course;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use App\Mail\RegistrationMail;
 // use Illuminate\Database\Eloquent\Builder;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+
 
 class CoursesController extends Controller
 {
@@ -62,6 +66,14 @@ class CoursesController extends Controller
         $course->save();
 
         return redirect()->route('courses.index');
+    }
+
+    public function register($id)
+    {
+        $user = auth()->user();
+        //dd($user);
+        \Mail::to("patryk.gensch@gmail.com")->send(new RegistrationMail());
+        return null;
     }
 
     // public function async(Request $request) {
