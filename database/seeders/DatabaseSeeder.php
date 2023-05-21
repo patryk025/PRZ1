@@ -10,6 +10,7 @@ use Database\Seeders\RoleSeeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\CoursesSeeder;
 use Illuminate\Support\Facades\Hash;
+use Database\Seeders\TimetableSeeder;
 use Database\Seeders\HostingTypeSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -26,6 +27,9 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
          \App\Models\User::factory(10)->create();
         $this->call(CoursesSeeder::class);
+        $this->call(TimetableSeeder::class);
+        $this->call(FormRegistrationSeeder::class);
+
 
         //  \App\Models\User::factory()->create([
         //      'name' => 'Test User',

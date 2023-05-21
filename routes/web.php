@@ -7,6 +7,7 @@ use App\Http\Controllers\TicketController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\HostingController;
 use App\Http\Controllers\HostingTypeController;
+use App\Http\Controllers\FormRegistrationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,4 +64,16 @@ Route::middleware([
     Route::get('/courses/{id}/edit', [CoursesController::class, 'edit'])->name('courses.edit');
     Route::put('/courses/{id}', [CoursesController::class, 'update'])->name('courses.update');
     Route::delete('/courses/{id}', [CoursesController::class, 'destroy'])->name('courses.destroy');
+
+    Route::get('/timetable', function() {
+        return view('timetables.index');
+    })->name("timetable.index");
+
+    Route::get('/courses/{id}/timetable', [CoursesController::class, 'show'])->name('courses.timetable');
+
+    Route::get('/register', [FormRegistrationController::class, 'index'])->name('register.index');
+    Route::get('/register', [FormRegistrationController::class, 'create'])->name('register.create');
+    Route::post('/register', [FormRegistrationController::class, 'store'])->name('register.store');
+
+    Route::get('/debug_mail/{id}', [CoursesController::class, 'register'])->name('register.register');
 });
